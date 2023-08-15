@@ -3,12 +3,12 @@
 ### Introduction
 In this part we are setting up the application to accept arguments, meaning we 
 can specify switches to customize the operation of the application. The 
-(original blog post)[https://github.com/litchipi/litchipi.github.io/blob/main/_posts/tutorials/containers_in_rust/2021-09-30-container-in-rust-part2.md]
-uses the `structopt` crate, however the page for this crate (https://docs.rs/structopt/latest/structopt/)[https://docs.rs/structopt/latest/structopt/] suggests that the `clap v3` crate is a better alternative, as `structopt` is now in maintenance mode. However 
+[original blog post](https://github.com/litchipi/litchipi.github.io/blob/main/_posts/tutorials/containers_in_rust/2021-09-30-container-in-rust-part2.md)
+uses the `structopt` crate, however the page for this crate [https://docs.rs/structopt/latest/structopt/](https://docs.rs/structopt/latest/structopt/) suggests that the `clap v3` crate is a better alternative, as `structopt` is now in maintenance mode. However 
 `clap v4` is the most recent version, so we will use this.
 
 ### Clap v4 - Parsing Arguments
-The (clap library)[https://docs.rs/clap/latest/clap/] is an easy way to parse input arguments, following the tutorial we need to parse
+The [clap library](https://docs.rs/clap/latest/clap/) is an easy way to parse input arguments, following the tutorial we need to parse
 the following arguments:
 
 ```rust
