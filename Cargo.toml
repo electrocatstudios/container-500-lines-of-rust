@@ -8,3 +8,5 @@ authors = ["Filtoid <phil@electrocatstudios.com"]
 
 [dependencies]
 clap = { version = "4.3.21", features = ["derive"] }
+log = "0.4.20"
+simple_logger = "4.2.0"
