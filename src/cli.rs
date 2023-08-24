@@ -3,6 +3,8 @@ use std::str::FromStr;
 use clap::Parser;
 use simple_logger::SimpleLogger;
 
+use crate::errors::Errcode;
+
 #[derive(Parser,Debug)]
 #[command(author, version, about, long_about = None)]
 pub struct Args {
@@ -25,7 +27,7 @@ pub struct Args {
 
 }
 
-pub fn parse_args() -> Args {
+pub fn parse_args() -> Result<Args, Errcode> {
     let args = Args::parse();
 
     if args.debug {
@@ -34,7 +36,11 @@ pub fn parse_args() -> Args {
         setup_log(log::LevelFilter::Info);
     }
 
-    args
+    if !args.mount_dir.exists() || !args.mount_dir.is_dir() {
+        return Err(Errcode::ArgumentInvalid("mount path"));
+    }
+
+    Ok(args)
 }
 
 pub fn setup_log(level: log::LevelFilter) {
