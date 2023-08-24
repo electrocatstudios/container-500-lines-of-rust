@@ -1,6 +1,7 @@
 use std::path::PathBuf;
 use std::str::FromStr;
 use clap::Parser;
+use simple_logger::SimpleLogger;
 
 #[derive(Parser,Debug)]
 #[command(author, version, about, long_about = None)]
@@ -26,5 +27,19 @@ pub struct Args {
 
 pub fn parse_args() -> Args {
     let args = Args::parse();
+
+    if args.debug {
+        setup_log(log::LevelFilter::Debug);
+    } else {
+        setup_log(log::LevelFilter::Info);
+    }
+
     args
+}
+
+pub fn setup_log(level: log::LevelFilter) {
+    SimpleLogger::new()
+        .with_level(level)
+        .init()
+        .unwrap();
 }
